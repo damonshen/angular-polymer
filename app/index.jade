@@ -1,5 +1,5 @@
 doctype html
-html.no-js
+html(ng-app='fbAttack')
 head
     meta(charset='utf-8')
     title gulpWepApp
@@ -24,14 +24,25 @@ head
        build:js scripts/vendor/modernizr.js 
     script(src='bower_components/modernizr/modernizr.js')
     // setup angualrjs
-    script(src='./bower_components/angular/angular.js')
+    script(src='./bower_components/angular/angular.min.js')
     // setup polymer
     script(src='./bower_components/platform/platform.js')
     link(rel='import', href='./bower_components/paper-elements/paper-elements.html')
+    link(rel='import', href='./bower_components/core-elements/core-elements.html')
+    link(rel='import', href='./bower_components/core-elements/core-elements.html')
     //
        endbuild 
   body
-    paper-button btn
+    .div(ng-controller='attackController as attack')
+      paper-tabs
+        paper-tab(ng-click='attack.selectTab(1)') Tab1
+        paper-tab(ng-click='attack.selectTab(2)') Tab2
+        paper-tab(ng-click="attack.selectTab(3)") Tab3
+      .tab
+        .tab1(ng-show='attack.isSelected(1)')
+          paper-button(label='btn')
+          paper-input(label='Facebook account' floatingLabel='true')
+          paper-input(label='Message' floatingLabel='true' multiline maxRows='5')
     //
        bower:js
     script(src='bower_components/jquery/dist/jquery.js')
