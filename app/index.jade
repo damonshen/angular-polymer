@@ -35,14 +35,16 @@ head
   body
     .div(ng-controller='attackController as attack')
       paper-tabs
-        paper-tab(ng-click='attack.selectTab(1)') Tab1
-        paper-tab(ng-click='attack.selectTab(2)') Tab2
-        paper-tab(ng-click="attack.selectTab(3)") Tab3
+        paper-tab(ng-click='attack.selectTab(1)') Introduction
+        paper-tab(ng-click='attack.selectTab(2)') Do it!!!
       .tab
         .tab1(ng-show='attack.isSelected(1)')
-          paper-button(label='btn')
+          #title Air raid
           paper-input(label='Facebook account' floatingLabel='true')
           paper-input(label='Message' floatingLabel='true' multiline maxRows='5')
+          .button-set
+            paper-button(label='Attack')
+            .fb-login-button(data-show-faces='false' data-auto-logout-link='true' data-size='xlarge')
     //
        bower:js
     script(src='bower_components/jquery/dist/jquery.js')
@@ -53,6 +55,7 @@ head
     //
        build:js scripts/main.js 
     script(src='scripts/main.js')
+    script(src='./scripts/loadFBsdk.js')
     //
        endbuild 
 
